@@ -4,12 +4,20 @@ import { interpret } from "../interpreter/index.ts"
 
 const run = (cmds: string) => {
     const tokens = scan(cmds)
+    console.log(tokens)
     const ast = parse(tokens)
+    console.log(ast)
     const run = interpret(ast)
 }
 
-const cmds = `a = ((1+2)*(2+(4+5)))
-b = 20`
+const cmds = `print "one";
+print true;
+print 2 + 1;
+var a = 10;
+print a;
+var a = 20;
+print a + 10;
+`
 
 run(cmds)
 

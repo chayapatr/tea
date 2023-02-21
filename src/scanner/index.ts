@@ -109,7 +109,7 @@ const matchComparator = ({source, cur, loc, line}: SourceData): TokenScan | void
 }
 
 const matchString = ({source, cur, loc, line}: SourceData): TokenScan | void => {
-    if(source[cur] === `"`) {
+    if(source[loc] === `"`) {
         const endLoc = source.indexOf(`"`, loc + 1)
         if(source.indexOf(`"`, loc + 1) !== -1)
         return addTokenScan("STRING", source.substring(loc, endLoc + 1), loc, endLoc + 1, cur, line, line)

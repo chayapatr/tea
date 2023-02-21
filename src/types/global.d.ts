@@ -28,3 +28,49 @@ interface Token {
     end: number
     line: number
 }
+
+type Opr = Token
+
+type Expr = {
+    type: string
+}
+
+interface BinaryExpr extends Expr {
+    left: ASTNode,
+    opr: Opr,
+    right: ASTNode
+}
+
+interface GroupingExpr extends Expr {
+    expr: ASTNode
+}
+
+interface LiteralExpr extends Expr {
+    expr: ASTNode | string
+}
+
+interface UnaryExpr extends Expr {
+    opr: Opr,
+    right: ASTNode
+}
+
+interface IdentifierExpr extends Expr {
+    expr: ASTNode | string
+}
+
+interface VariableExpr extends Expr {
+    name: Toekn
+}
+
+interface Stmt {
+    type: string
+    expr: ASTNode
+}
+
+interface VarStmt {
+    type: string,
+    name: string
+    expr: ASTNode | null
+}
+
+type ASTNode = Expr | BinaryExpr | GroupingExpr | UnaryExpr | IdentifierExpr | Stmt
